@@ -9,6 +9,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 public class MyFIRSTOpModeClass extends LinearOpMode {
     private DcMotor frontLeft;
     private DcMotor backLeft;
+
     private DcMotor frontRight;
     private DcMotor backRight;
     @Override
@@ -19,6 +20,8 @@ public class MyFIRSTOpModeClass extends LinearOpMode {
         backRight = hardwareMap.get(DcMotor.class, "backRight");
 
         waitForStart();
+
+        telemetry.addData("Is Started", isStarted());
 
         while (opModeIsActive()) {
             double drive = gamepad1.left_stick_y * -1;
