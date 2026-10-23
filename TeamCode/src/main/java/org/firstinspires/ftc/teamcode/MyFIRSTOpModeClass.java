@@ -22,11 +22,12 @@ public class MyFIRSTOpModeClass extends LinearOpMode {
         waitForStart();
 
         telemetry.addData("Is Started", isStarted());
+        telemetry.update();
 
         while (opModeIsActive()) {
             double drive = gamepad1.left_stick_y * -1;
             double turn = gamepad1.left_stick_x;
-            double left = drive + turn;
+            double left = -(drive + turn);
             double right = drive - turn;
 
             frontLeft.setPower(left);
