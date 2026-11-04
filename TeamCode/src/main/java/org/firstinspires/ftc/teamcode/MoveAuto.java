@@ -5,12 +5,12 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.mechanisms.DcMotorDriveTrainTestBench;
+import org.firstinspires.ftc.teamcode.mechanisms.DriveTrain;
 
 @Autonomous
 public class MoveAuto extends LinearOpMode {
 
-    private DcMotorDriveTrainTestBench bench = new DcMotorDriveTrainTestBench();
+    private DriveTrain bench = new DriveTrain();
     private ElapsedTime timer = new ElapsedTime();
 
     @Override
