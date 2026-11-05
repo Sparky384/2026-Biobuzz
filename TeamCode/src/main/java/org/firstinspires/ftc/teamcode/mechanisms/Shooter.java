@@ -16,6 +16,8 @@ public class Shooter {
     // Change resolution once we get encoder
     private final int ENCODER_RESOLUTION = 360;
     private final double GEAR_RATIO = 2.75;
+
+    private int currentDirection;
     public Shooter(HardwareMap hardwareMap){
         //Implement Gear Ratio: 2.75:1 | 360/2.75 = 130 (Basically 109.1 or 109)
         motor = hardwareMap.get(DcMotor.class, "ShooterMotor");
@@ -36,19 +38,30 @@ public class Shooter {
     public double getTurretAngle(){
         int counts = shooterEncoder.getCurrentPosition();
         return GEAR_RATIO * (counts / ENCODER_RESOLUTION);
-
     }
     //True = left, false = right
     public void turnTurret(boolean direction){
         if (direction){
+            currentDirection = 1;
             turretServo.setPosition(1);
         }
         else {
+            currentDirection = -1;
             turretServo.setPosition(-1);
         }
 
     }
+
+    public void periodic(){
+        if (currentDirection == 1 && getTurretAngle() < MIN_ANGLE){
+            stopTurret();
+        }
+        else if (currentDirection == -1 && getTurretAngle() > MAX_ANGLE){
+            stopTurret();
+        }
+    }
     public void stopTurret(){
+        currentDirection = 0;
         turretServo.setPosition(0);
     }
 
