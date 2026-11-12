@@ -23,20 +23,29 @@ public class TestAuto extends LinearOpMode {
         backRight = hardwareMap.get(DcMotor.class, "backRight");
 
         waitForStart();
-
-        setMotorPower(.5);
-
-        timer.reset();
-        while (timer.milliseconds() < 2000){
-            //Do nothing inside
-        }
-        setMotorPower(0);
+        runAuto();
     }
+    public void drive(double forward, double spin){
+        double left = -(forward + spin);
+        double right = forward - spin;
 
-    private void setMotorPower(double motorPower){
-        frontLeft.setPower(motorPower);
-        backLeft.setPower(motorPower);
-        frontRight.setPower(motorPower);
-        backRight.setPower(motorPower);
+        frontLeft.setPower(left);
+        backLeft.setPower(left);
+        frontRight.setPower(right);
+        backRight.setPower(right);
+    }
+    private void runAuto(){
+        timer.reset();
+        while (timer.milliseconds() < 4750 ){
+            drive(1,-.07);
+        }
+        timer.reset();
+        while (timer.milliseconds() < 1000){
+            drive(0,-1);
+        }
+        timer.reset();
+        while (timer.milliseconds() < 2500){
+            drive(1,-.07);
+        }
     }
 }

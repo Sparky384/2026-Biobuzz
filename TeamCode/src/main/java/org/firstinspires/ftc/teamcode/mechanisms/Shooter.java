@@ -51,7 +51,6 @@ public class Shooter {
         }
 
     }
-
     public void periodic(){
         if (currentDirection == 1 && getTurretAngle() < MIN_ANGLE){
             stopTurret();

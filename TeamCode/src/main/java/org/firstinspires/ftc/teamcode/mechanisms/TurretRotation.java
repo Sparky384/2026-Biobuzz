@@ -11,7 +11,7 @@ public class TurretRotation {
     }
 
     public void setServoRot(double power){
-        servoTurretRot.setPower(power)
+        //servoTurretRot.setPower(power);
     }
 
 }
