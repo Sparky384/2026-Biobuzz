@@ -15,8 +15,8 @@ public class Shooter {
     private final double MAX_ANGLE = 90;
 
     // Change resolution once we get encoder
-    private final int ENCODER_RESOLUTION = 360;
-    private final double GEAR_RATIO = 2.75;
+    private final int ENCODER_RESOLUTION = 8192;
+    private final double GEAR_RATIO = 1/2.75;
     private final double P = 0.004;
     private int currentDirection;
     public Shooter(HardwareMap hardwareMap){
@@ -37,7 +37,7 @@ public class Shooter {
     }
     public double getTurretAngle(){
         int counts = shooterEncoder.getCurrentPosition();
-        return GEAR_RATIO * (counts / ENCODER_RESOLUTION)*2;
+        return GEAR_RATIO * (counts / ENCODER_RESOLUTION);
     }
     //True = left& negative, false = right & positive
     public void turnTurret(boolean direction){

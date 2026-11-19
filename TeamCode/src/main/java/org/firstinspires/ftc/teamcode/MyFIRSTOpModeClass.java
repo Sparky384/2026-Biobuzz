@@ -49,10 +49,10 @@ public class MyFIRSTOpModeClass extends LinearOpMode {
                 shooter.stopTurret();
 
             if (gamepad1.a){
-                shooter.spinUp(200);
+                shooter.spinUp(500);
             }
             else if (gamepad1.b) {
-                shooter.spinUp(70);
+                shooter.spinUp(100);
             }
             else {
                 shooter.spinUp(0);
